@@ -1,0 +1,22 @@
+{
+    "Group": "sh.ndy",
+    "Name": "HytaleExampleMod",
+    "Version": "1.0.0",
+    "Description": "An example mod.",
+    "Authors": [
+        {
+            "Name": "Greek"
+        }
+    ],
+    "Website": "https://example.com",
+    "ServerVersion": "*",
+    "Dependencies": {
+        
+    },
+    "OptionalDependencies": {
+        
+    },
+    "DisabledByDefault": false,
+    "Main": "sh.ndy.hytaleexamplemod.HytaleExampleModPlugin",
+    "IncludesAssetPack": false
+}
