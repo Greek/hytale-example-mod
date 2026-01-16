@@ -21,7 +21,7 @@ dependencies {
     testImplementation platform('org.junit:junit-bom:5.10.0')
     testImplementation 'org.junit.jupiter:junit-jupiter'
     // TODO: Use hosted JAR directly from Hypixel in the future.
-    implementation(files("$hytaleHome/install/$patchline/package/game/$game_build/Server/HytaleServer.jar"))
+    implementation(files("$hytale_home_dir/install/$hytale_patchline/package/game/$hytale_game_build/Server/HytaleServer.jar"))
 }
 
 test {
@@ -52,8 +52,12 @@ tasks.named('processResources') {
     dependsOn 'updatePluginManifest'
 }
 
+tasks.named('jar') {
+    dependsOn 'processResources'
+}
+
 tasks.register('deployPlugin', Copy) {
-    dependsOn processResources, jar
+    dependsOn jar
     from jar.archiveFile
 
     // XXX: This was a workaround for an issue where `/pl r` does not reload the plugin due to
@@ -82,7 +86,7 @@ idea.project.settings.runConfigurations {
     'HytaleServer'(org.jetbrains.gradle.ext.Application) {
         mainClass = 'com.hypixel.hytale.Main'
         moduleName = project.idea.module.name + '.main'
-        programParameters = "--allow-op --disable-sentry --assets=\"$hytaleHome/install/$patchline/package/game/$game_build/Assets.zip\" --mods=${file("src/main/").absolutePath} --auth-mode=authenticated"
+        programParameters = "--allow-op --disable-sentry --assets=\"$hytale_home_dir/install/$hytale_patchline/package/game/$hytale_game_build/Assets.zip\" --mods=${file("src/main/").absolutePath} --auth-mode=authenticated"
         workingDirectory = serverRunDir.absolutePath
     }
 }
