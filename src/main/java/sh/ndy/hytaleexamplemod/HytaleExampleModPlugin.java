@@ -14,7 +14,7 @@ public class HytaleExampleModPlugin extends JavaPlugin {
         return instance;
     }
 
-    public HytaleExampleModPlugin(@Nonnull JavaPluginInit init) {
+    public HytaleExampleModPlugin(JavaPluginInit init) {
         super(init);
 
         instance = this;
