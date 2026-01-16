@@ -49,6 +49,10 @@ tasks.register('updatePluginManifest') {
     }
 }
 
+tasks.withType(Javadoc) {
+    options.addStringOption('Xdoclint:none', '-quiet')
+}
+
 tasks.named('processResources') {
     dependsOn 'updatePluginManifest'
 }
