@@ -70,6 +70,10 @@ tasks.register('deployPlugin', Copy) {
 }
 
 def serverRunDir = file("$projectDir/run")
+if (!serverRunDir.exists()) {
+    serverRunDir.mkdirs()
+}
+
 
 idea.project.settings.runConfigurations {
     'HytaleServer'(org.jetbrains.gradle.ext.Application) {
