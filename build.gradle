@@ -6,8 +6,6 @@ plugins {
     id 'org.jetbrains.gradle.plugin.idea-ext' version '1.3'
 }
 
-version = project.version
-
 java {
     toolchain.languageVersion = JavaLanguageVersion.of(java_version)
     withSourcesJar()
@@ -37,10 +35,15 @@ tasks.register('updatePluginManifest') {
             throw new GradleException("Could not find manifest.json at ${manifestFile.path}!")
         }
         def manifestJson = new groovy.json.JsonSlurper().parseText(manifestFile.text)
-        // TODO: Manage all the manifest fields in `gradle.properties` by adding them here.
+
+        // All the fields in `manifest.json` are set here.
         manifestJson.Group = prj_group
-        manifestJson.Version = version
+        manifestJson.Name = prj_name
+        manifestJson.Version = prj_version
+        manifestJson.Description = prj_description
+        manifestJson.Website = prj_website
         manifestJson.Main = entry_point
+
         manifestFile.text = groovy.json.JsonOutput.prettyPrint(groovy.json.JsonOutput.toJson(manifestJson))
     }
 }
