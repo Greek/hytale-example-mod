@@ -24,7 +24,7 @@ public class TestCommand extends AbstractAsyncPlayerCommand {
 
     @Nonnull
     @Override
-    protected CompletableFuture<Void> executeAsync(@Nonnull CommandContext commandContext, @Nonnull Store<EntityStore> store, @Nonnull Ref<EntityStore> ref, @Nonnull PlayerRef playerRef, @Nonnull World world) {
+    protected CompletableFuture<Void> executeAsync(CommandContext commandContext, Store<EntityStore> store, Ref<EntityStore> ref, PlayerRef playerRef, World world) {
         commandContext.sendMessage(Message.raw("world!"));
         Damage.CommandSource damageSource = new Damage.CommandSource(commandContext.sender(), "hello");
         DeathComponent.tryAddComponent(world.getEntityStore().getStore(), playerRef.getReference(), new Damage(damageSource, DamageCause.DROWNING, 999));
