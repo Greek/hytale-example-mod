@@ -4,20 +4,19 @@ import com.hypixel.hytale.server.core.plugin.JavaPlugin;
 import com.hypixel.hytale.server.core.plugin.JavaPluginInit;
 import sh.ndy.hytaleexamplemod.commands.TestCommand;
 
-import javax.annotation.Nonnull;
 import java.util.logging.Level;
 
 public class HytaleExampleModPlugin extends JavaPlugin {
     private static HytaleExampleModPlugin instance;
 
-    public static HytaleExampleModPlugin getInstance() {
-        return instance;
-    }
-
     public HytaleExampleModPlugin(JavaPluginInit init) {
         super(init);
 
         instance = this;
+    }
+
+    public static HytaleExampleModPlugin getInstance() {
+        return instance;
     }
 
     @Override
